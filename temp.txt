@@ -1,0 +1,36 @@
+kind: ImageStream
+apiVersion: image.openshift.io/v1
+metadata:
+  name: ksz-demo
+  namespace: ksz-dev
+  uid: fdaef760-2366-4fb2-89c1-96cbeebc7135
+  resourceVersion: '391831'
+  generation: 1
+  creationTimestamp: '2024-12-18T12:45:15Z'
+spec:
+  lookupPolicy:
+    local: false
+status:
+  dockerImageRepository: 'image-registry.openshift-image-registry.svc:5000/ksz-dev/ksz-demo'
+  publicDockerImageRepository: default-route-openshift-image-registry.apps-crc.testing/ksz-dev/ksz-demo
+  tags:
+    - tag: '1.0'
+      items:
+        - created: '2025-01-17T08:34:02Z'
+          dockerImageReference: 'image-registry.openshift-image-registry.svc:5000/ksz-dev/ksz-demo@sha256:6dee356c0bee8300f48f488858a68d2c86608a2594f646b680f979dd5dba614b'
+          image: 'sha256:6dee356c0bee8300f48f488858a68d2c86608a2594f646b680f979dd5dba614b'
+          generation: 1
+    - tag: latest
+      items:
+        - created: '2025-01-15T13:27:00Z'
+          dockerImageReference: 'image-registry.openshift-image-registry.svc:5000/ksz-dev/ksz-demo@sha256:effc4b56bb0c3bdca3c2e3a4a3c15cee5d81162cafddffc62a1d074881df7b21'
+          image: 'sha256:effc4b56bb0c3bdca3c2e3a4a3c15cee5d81162cafddffc62a1d074881df7b21'
+          generation: 1
+        - created: '2025-01-15T13:17:46Z'
+          dockerImageReference: 'image-registry.openshift-image-registry.svc:5000/ksz-dev/ksz-demo@sha256:e4ce4f58b987b3abbbcdaddd3b2be7ff4891b6d5227dcec1d61e6f02f2f306af'
+          image: 'sha256:e4ce4f58b987b3abbbcdaddd3b2be7ff4891b6d5227dcec1d61e6f02f2f306af'
+          generation: 1
+        - created: '2025-01-15T12:50:22Z'
+          dockerImageReference: 'image-registry.openshift-image-registry.svc:5000/ksz-dev/ksz-demo@sha256:a2f35655aa1805afe7fce5393460d8e50ad64035ea7e1a10fb2d9ec66640733f'
+          image: 'sha256:a2f35655aa1805afe7fce5393460d8e50ad64035ea7e1a10fb2d9ec66640733f'
+          generation: 1

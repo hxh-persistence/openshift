@@ -1,0 +1,84 @@
+####openshift URL
+https://console-openshift-console.apps-crc.testing
+developer
+developer
+
+####docker file
+    # tools update
+
+    RUN apt-get update && apt-get install -y --no-install-recommends \
+        python3 \
+        python3-pip \
+        vim \
+        build-essential \
+        gcc \
+        g++ \
+        make \
+        curl \
+        wget \
+        git \
+        && apt-get clean && rm -rf /var/lib/apt/lists/*
+
+    # python3 link
+
+    RUN ln -sf /usr/bin/python3 /usr/bin/python && ln -sf /usr/bin/pip3
+    /usr/bin/pip
+
+    # work dir set, and enter into app dir
+
+    WORKDIR /app
+    RUN chmod 777 /app
+    # download code
+
+    RUN git clone   https://github.com/yifanCandy/data_demo.git
+
+    RUN  cp  -r /app/data_demo/*    /app
+
+    RUN ls -l /app
+
+    # 添加镜像默认命令
+
+    CMD ["python", "./main.py"]
+
+
+    git remote add origin https://github.com/hxh-persistence/openshift.git
+
+
+####20250219 勉強メモー
+
+フォルダ：
+hxh@HXHdeMacBook-Air share % 
+
+podman初期化：
+    podman machine init
+
+podman開始：
+    podman machine start
+
+podman VMに入る：
+    podman machine ssh
+
+podman中にubuntu pull
+    podman pull ubuntu
+
+podman image見る
+    podman images
+
+ubuntuコンテナを作って、起動する
+    podman run -it ubuntu bash
+
+    ...コマンド
+
+ubuntu から抜け出す
+    exit
+
+podman VM から抜け出す
+    exit
+
+podman machine停止
+    podman machine stop
+
+####GIT SSH 作成
+ssh-keygen -t ed25519 -C "xiaohui.673799093@gmail.com"
+
+git remote add origin https://github.com/hxh-persistence/openshift.git
