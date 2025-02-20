@@ -8,7 +8,7 @@ class MainEntry:
     def demo_test(self):  
         while True:
             current_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-            print(f'this is demo test. current_time:{current_time}')
+            print(f'this is demo test from xiaohui. current_time:{current_time}')
             time.sleep(5)
 
 # business main

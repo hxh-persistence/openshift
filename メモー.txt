@@ -40,8 +40,7 @@ developer
 
     CMD ["python", "./main.py"]
 
-
-    git remote add origin https://github.com/hxh-persistence/openshift.git
+    #git remote add origin https://github.com/hxh-persistence/openshift.git
 
 
 ####20250219 勉強メモー
@@ -78,8 +77,15 @@ podman VM から抜け出す
 podman machine停止
     podman machine stop
 
-####GIT 関連ローカル
+####20250220 GIT 関連ローカル
 ・ssh-keygen -t ed25519 -C "xiaohui.673799093@gmail.com"
 ・add key to git
 ・関連ローカルのフォルダ to git repository →　git remote add origin git@github.com:hxh-persistence/openshift.git
-・
+・チェック成功できるか？　→ git remote -v
+・git add .　→ add file
+・git commit -m "first commit"　→ commit
+・git branch -M main　→ デフォルト作成　main
+・git push -u origin main
+・git branch -a →　全てbranch検索
+
+・ubuntuに入って、data-demo削除して、自分のappをインストール
