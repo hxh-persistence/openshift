@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% from "macros.html" import render_item %}
+{% block title %}block title text{% endblock %}
+
+{% block content %}
+<h2>Welcome to the Home Page!</h2>
+<p>Content goes here.</p>
+<p>username:{{ username|capitalize }}</p>
+<p>email:{{ email|capitalize }}</p>
+{% endblock %}
