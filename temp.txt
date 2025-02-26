@@ -1,59 +1,3 @@
-kind: BuildConfig
-apiVersion: build.openshift.io/v1
-metadata:
-  name: ksz-he-build
-  namespace: ksz-dev-he
-  uid: bfef1fff-f186-4093-a8d0-3521d55d1a4a
-  resourceVersion: '1072309'
-  generation: 4
-  creationTimestamp: '2025-02-21T14:08:24Z'
-  managedFields:
-    - manager: Mozilla
-      operation: Update
-      apiVersion: build.openshift.io/v1
-      time: '2025-02-24T13:09:40Z'
-      fieldsType: FieldsV1
-      fieldsV1:
-        'f:spec':
-          'f:output':
-            'f:to': {}
-          'f:runPolicy': {}
-          'f:source':
-            'f:dockerfile': {}
-            'f:type': {}
-          'f:strategy':
-            'f:dockerStrategy':
-              .: {}
-              'f:from': {}
-            'f:type': {}
-    - manager: openshift-apiserver
-      operation: Update
-      apiVersion: build.openshift.io/v1
-      time: '2025-02-24T13:11:07Z'
-      fieldsType: FieldsV1
-      fieldsV1:
-        'f:status':
-          'f:lastVersion': {}
-spec:
-  nodeSelector: null
-  output:
-    to:
-      kind: DockerImage
-      name: 'image-registry.openshift-image-registry.svc:5000/ksz-dev-he/example'
-  resources: {}
-  successfulBuildsHistoryLimit: 5
-  failedBuildsHistoryLimit: 5
-  strategy:
-    type: Docker
-    dockerStrategy:
-      from:
-        kind: DockerImage
-        name: 'ubuntu:latest'
-  postCommit: {}
-  source:
-    type: Dockerfile
-    dockerfile: |-
-
 # latest base image
 FROM ubuntu:latest
 # tools update
@@ -84,8 +28,11 @@ RUN chmod 777 /app
 
 # RUN git clone   https://github.com/yifanCandy/data_demo.git
 RUN git clone   https://github.com/hxh-persistence/openshift.git
+
 RUN python -m venv appenv
-RUN source appenv/bin/activate
+WORKDIR /appenv
+RUN chmod 777 /appenv
+RUN . /appenv/bin/activate
 RUN pip install flask
 
 # RUN  cp  -r /app/openshift/*    /app
