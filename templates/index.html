@@ -7,4 +7,11 @@
 <p>Content goes here.</p>
 <p>username:{{ username|capitalize }}</p>
 <p>email:{{ email|capitalize }}</p>
+<p>update status:{{ message|capitalize }}</p>
+<br>
+<form action="/upload" method="post" enctype="multipart/form-data">
+    <input type="file" name="file">
+    <button type="submit">ファイルアップロード</button>
+</form>
+
 {% endblock %}
