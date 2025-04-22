@@ -7,8 +7,11 @@
 <p>Content goes here.</p>
 <p>username:{{ username|capitalize }}</p>
 <p>email:{{ email|capitalize }}</p>
-<p><textarea name="content" rows="20" cols="50">{{ all_content }}</textarea></p>
 <br>
+<form method="POST" action="/clear">
+  <textarea name="content" rows="10" cols="40">{{ all_content }}</textarea>
+  <button type="submit" name="action" value="clear">clear</button>
+</form>
 <h2>入力内容はファイルに保存</h2>
 <form action="/upload" method="post" enctype="multipart/form-data">
   <textarea name="content" rows="6" cols="40">{{ content }}</textarea><br>

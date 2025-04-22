@@ -15,9 +15,13 @@ app.secret_key = 'hxhtest'
 def login():
     return render_template('login.html', title='Login Page')
 
-#UPLOAD_FOLDER = '/usr/share/text.txt'
-UPLOAD_FOLDER = '/Users/hxh/Desktop/test/test.txt'
+#UPLOAD_FOLDER = '/usr/share'
+UPLOAD_FOLDER = '/Users/hxh/Desktop/test'
+UPLOAD_FILE = 'test.txt'
+UPLOAD_FILE_PATH = UPLOAD_FOLDER + '//' + UPLOAD_FILE
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+app.config['UPLOAD_FILE'] = UPLOAD_FILE
+app.config['UPLOAD_FILE_PATH'] = UPLOAD_FOLDER + '//' + UPLOAD_FILE
 
 @app.route('/submit', methods=['POST'])
 def submit():
@@ -27,10 +31,12 @@ def submit():
     session['username'] = name
     session['email'] = email
     try:
-        with open(UPLOAD_FOLDER, 'r', encoding='utf-8') as f:
+        with open(UPLOAD_FILE_PATH, 'r', encoding='utf-8') as f:
             all_content = f.read()
     except FileNotFoundError:
         all_content = ''
+        with open(UPLOAD_FILE_PATH, 'w', encoding='utf-8') as f:
+            pass
     return render_template('index.html', username=session['username'], email=session['email'], all_content=all_content)
 
 
@@ -40,13 +46,24 @@ def upload_file():
     # file = request.files['file']
     # file.save(f"{UPLOAD_FOLDER}/{session['username']}_{current_time_str}_{file.filename}")
     if request.method == 'POST':
-        new_content = request.form['content'].strip()
-        if new_content:
-            with open(UPLOAD_FOLDER, 'a', encoding='utf-8') as f:
+        new_content = f"{session['username']}は[{current_time_str}]に{request.form['content'].strip()}書いた"
+        if request.form['content'].strip():
+            with open(UPLOAD_FILE_PATH, 'a', encoding='utf-8') as f:
                 f.write(new_content + '\n')
-    # 读取全部内容显示
     try:
-        with open(UPLOAD_FOLDER, 'r', encoding='utf-8') as f:
+        with open(UPLOAD_FILE_PATH, 'r', encoding='utf-8') as f:
+            all_content = f.read()
+    except FileNotFoundError:
+        all_content = ''
+    return render_template('index.html', all_content=all_content)
+
+@app.route('/clear', methods=['POST'])
+def clear_file():
+    if request.method == 'POST':
+        with open(UPLOAD_FILE_PATH, 'w', encoding='utf-8') as f:
+           f.write('')
+    try:
+        with open(UPLOAD_FILE_PATH, 'r', encoding='utf-8') as f:
             all_content = f.read()
     except FileNotFoundError:
         all_content = ''
