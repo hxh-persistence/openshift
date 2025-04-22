@@ -15,13 +15,13 @@ app.secret_key = 'hxhtest'
 def login():
     return render_template('login.html', title='Login Page')
 
-#UPLOAD_FOLDER = '/usr/share'
-UPLOAD_FOLDER = '/Users/hxh/Desktop/test'
+UPLOAD_FOLDER = '/usr/share'
+#UPLOAD_FOLDER = '/Users/hxh/Desktop/test'
 UPLOAD_FILE = 'test.txt'
-UPLOAD_FILE_PATH = UPLOAD_FOLDER + '//' + UPLOAD_FILE
+UPLOAD_FILE_PATH = UPLOAD_FOLDER + '/' + UPLOAD_FILE
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.config['UPLOAD_FILE'] = UPLOAD_FILE
-app.config['UPLOAD_FILE_PATH'] = UPLOAD_FOLDER + '//' + UPLOAD_FILE
+app.config['UPLOAD_FILE_PATH'] = UPLOAD_FOLDER + '/' + UPLOAD_FILE
 
 @app.route('/submit', methods=['POST'])
 def submit():
